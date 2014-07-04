@@ -1,77 +1,47 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Flippers -testi</title>
-        <script src="javascript/jquery-1.10.0.min.js" type="application/x-javascript"></script>
-        <!--<script src="javascript/jquery-ui.min.js" type="application/x-javascript"></script>-->
-        <script src="javascript/flippers.js" type="application/x-javascript"></script>
-        <link rel="stylesheet" type="text/css" href="styles/flippers.css"/>
-        <style>
-            body {
-                overflow: hidden;
-                margin: 0;
-                padding: 0;
-                background-image: url('./images/irongrip.png') !important;
-            }
-        </style>
-        <script>
-            $(document).ready(
-                function() {
-                    $('.container').flippers(
-                        { // config
-                            extraCount: 4,
-                            itemSpacing: 125, // percent of width.
-                            exitSpeed: 1.5,
-                            defaultCover: 'images/covers/nocover.png',
-                            noTransition: true,
-                            items: [
-                                {
-                                    title: '8 Mile',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Evolution',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Untitled movie',
-                                },
-                                {
-                                    title: 'Batman Begins',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Amour',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Airplane!',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Supersize Me',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Big Buck Bunny',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Aladdin',
-                                    frontCover: './images/covers/nocover.png'
-                                },
-                                {
-                                    title: 'Talvisota',
-                                    frontCover: './images/covers/nocover.png'
-                                }
-                            ]
-                        }
-                    );
-                }
-            );
-        </script>
-    </head>
-    <body>
-        <div class="container"></div>
-    </body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Flippers -testi</title>
+		<script src="javascript/jquery-1.10.0.min.js" type="application/x-javascript"></script>
+		<!--<script src="javascript/jquery-ui.min.js" type="application/x-javascript"></script>-->
+		<script src="javascript/flippers.js" type="application/x-javascript"></script>
+		<link rel="stylesheet" type="text/css" href="styles/flippers.css"/>
+		<style>
+			body {
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				background-image: url('./images/irongrip.png') !important;
+			}
+		</style>
+		<script>
+			$(document).ready(
+				function() {
+					$('.container').flippers(
+						{ // config
+							extraCount: 4,
+							itemSpacing: 125, // percent of width.
+							exitSpeed: 1.5,
+							noTransition: true,
+							items: [
+								$('<img src="./images/covers/nocover.png" alt="8 Mile" />'),
+								$('<img src="./images/covers/nocover.png" alt="Evolution" />'),
+								$('<img src="./images/covers/nocover.png" alt="Untitled movie" />'),
+								$('<img src="./images/covers/nocover.png" alt="Batman Begins" />'),
+								$('<img src="./images/covers/nocover.png" alt="Amour" />'),
+								$('<img src="./images/covers/nocover.png" alt="Airplane!" />'),
+								$('<img src="./images/covers/nocover.png" alt="Supersize Me" />'),
+								$('<img src="./images/covers/nocover.png" alt="Big Buck Bunny" />'),
+								$('<img src="./images/covers/nocover.png" alt="Aladdin" />'),
+								$('<img src="./images/covers/nocover.png" alt="Talvisota" />')
+							]
+						}
+					);
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<div class="container"></div>
+	</body>
 </html>
