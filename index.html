@@ -1,17 +1,26 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Flippers -testi</title>
+		<title>Flippers test</title>
 		<script src="javascript/jquery-1.10.0.min.js" type="application/x-javascript"></script>
 		<!--<script src="javascript/jquery-ui.min.js" type="application/x-javascript"></script>-->
 		<script src="javascript/flippers.js" type="application/x-javascript"></script>
 		<link rel="stylesheet" type="text/css" href="styles/flippers.css"/>
 		<style>
-			body {
+			html, body {
+				width: 100%;
+				height: 100%;
 				overflow: hidden;
 				margin: 0;
 				padding: 0;
 				background-image: url('./images/irongrip.png') !important;
+			}
+			
+			.box1 {
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				background-color: red;
 			}
 		</style>
 		<script>
@@ -20,20 +29,19 @@
 					$('.container').flippers(
 						{ // config
 							extraCount: 4,
-							itemSpacing: 125, // percent of width.
+							itemSpacing: 150, // percent of width.
 							exitSpeed: 1.5,
 							noTransition: true,
 							items: [
-								$('<img src="./images/covers/nocover.png" alt="8 Mile" />'),
-								$('<img src="./images/covers/nocover.png" alt="Evolution" />'),
-								$('<img src="./images/covers/nocover.png" alt="Untitled movie" />'),
-								$('<img src="./images/covers/nocover.png" alt="Batman Begins" />'),
-								$('<img src="./images/covers/nocover.png" alt="Amour" />'),
-								$('<img src="./images/covers/nocover.png" alt="Airplane!" />'),
-								$('<img src="./images/covers/nocover.png" alt="Supersize Me" />'),
-								$('<img src="./images/covers/nocover.png" alt="Big Buck Bunny" />'),
-								$('<img src="./images/covers/nocover.png" alt="Aladdin" />'),
-								$('<img src="./images/covers/nocover.png" alt="Talvisota" />')
+								$('<div><img src="./images/covers/nocover.png" alt="8 Mile" /><span class="menuitem">Movie 1</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Airplane!" /><span class="menuitem">Movie 2</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Aladdin" /><span class="menuitem">Movie 3</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Amour" /><span class="menuitem">Movie 4</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Batman Begins" /><span class="menuitem">Movie 5</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Big Buck Bunny" /><span class="menuitem">Movie 6</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Evolution" /><span class="menuitem">Movie 7</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Supersize Me" /><span class="menuitem">Movie 8</span></div>'),
+								$('<div><img src="./images/covers/nocover.png" alt="Talvisota" /><span class="menuitem">Movie 9</span></div>')
 							]
 						}
 					);

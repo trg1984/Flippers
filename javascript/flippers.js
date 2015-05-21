@@ -14,17 +14,19 @@
 					var self = this;
 					var defaultConfig = {
 						itemStyle: {
-							translateX: function(i) {
+							__translateX__: function(i) {
 								//return 0.3 * self.config.itemSpacing * ((i + (2 * self.config.extraCount + 1)) % 5) - 50 - 100; // Grid
 								return i * ((i == -self.config.extraCount) || (i == self.config.extraCount) ? self.config.itemSpacing * self.config.exitSpeed : self.config.itemSpacing) - 50; // Horizontal bar, large items.
 								//return 0.3 * i * ((i == -self.config.extraCount) || (i == self.config.extraCount) ? self.config.itemSpacing * self.config.exitSpeed : self.config.itemSpacing) - 50; // Horizontal bar, small items.
 								//return -50 + 75 * Math.cos(i); // Wavy movement.
 								//return -50 + 400 * Math.cos((i / (2 * self.config.extraCount + 1) * 2 + 0.5) * Math.PI); // Circle.
 								//return i <= 0 ? 2 * i - 50 : 100 * i - 50; // Vista tab list -like menu.
-								
+								//return i == 0 ? -218 : -220; // Selected a bit out.
+								return -170; // On the left.
 								return -50; // No effect.
 							},
-							translateY: function(i) {
+							__translateY__: function(i) {
+								//return i * ((i == -self.config.extraCount) || (i == self.config.extraCount) ? self.config.itemSpacing * self.config.exitSpeed : self.config.itemSpacing) - 50; // 
 								//return 0.3 * self.config.itemSpacing * Math.floor((i + (2 * self.config.extraCount + 1)) / 5) - 50 - 100; // Grid
 								//return i * ((i == -self.config.extraCount) || (i == self.config.extraCount) ? self.config.itemSpacing * self.config.exitSpeed : self.config.itemSpacing) - 50; // Vertical bar.
 								//return -50 + 75 * Math.sin(i); // Wavy movement.
@@ -33,37 +35,43 @@
 								
 								return -50; // No effect.
 							},
-							translateZ: function(i) {
+							__translateZ__: function(i) {
 								//return -50 - i*i * self.config.itemSpacing / 10;
 								return 0;
 							},
-							rotateX: function(i) {
+							__rotateX__: function(i) {
 								return 0; // No effect.
 							},
-							rotateY: function(i) {
+							__rotateY__: function(i) {
 								//if (i === 0) return 0;
 								//return i < 0 ? 36 : -36; // Bend extra items towards the center.
 								return 0; // No effect.
 							},
-							rotateZ: function(i) {
+							__rotateZ__: function(i) {
 								//return i / (2 * self.config.extraCount + 1) * 360;
 								return 0; // No effect.
 							},
-							scaleX: function(i) {
-								return 0.3 / (0.05 * i * i + 0.4); // Big in the middle, small on the edges.
+							__scaleX__: function(i) {
+								//return 0.3 / (0.05 * i * i + 0.4); // Big in the middle, small on the edges.
+								return 0.6 / (0.05 * i * i + 0.4); // Big in the middle, small on the edges.
+								//return 0.3; // Small.
+								//return i == 0 ? 1.05 : 1; // Selected a bit out.
+								return 1; // No effect.
+							},
+							__scaleY__: function(i) {
+								//return 0.3 / (0.05 * i * i + 0.4); // Big in the middle, small on the edges.
+								return 0.6 / (0.05 * i * i + 0.4); // Big in the middle, small on the edges.
 								//return 0.3; // Small.
 								return 1; // No effect.
 							},
-							scaleY: function(i) {
-								return 0.3 / (0.05 * i * i + 0.4); // Big in the middle, small on the edges.
-								//return 0.3; // Small.
-								return 1; // No effect.
-							},
-							scaleZ: function(i) {
+							__scaleZ__: function(i) {
 								return 1;
 							},
 							opacity: function(i) {
-								//return (i == -self.config.extraCount) || (i == self.config.extraCount) ? 0 : 1; // Hide first and last one.
+								return (i == -self.config.extraCount) || (i == self.config.extraCount) ? 0 : 1; // Hide first and last one.
+								
+								//return i === 0 ? 1 : (i == -self.config.extraCount) || (i == self.config.extraCount) ? 0 : 0.5; // Emphasize the current one, fade others.
+								
 								//return i === 0 ? 1 : 0; // Only show the current one.
 								//return 1 - Math.abs(i) / self.config.extraCount; // Linear fade.
 								//return i > 0 ? 0 : 1 - Math.abs(i) / self.config.extraCount; // One-way linear fade.
@@ -74,16 +82,30 @@
 								//return i; // Linear sort.
 							},
 							transform: function(i) {
-								return "translateX(" + self.config.itemStyle.translateX(i) + "%) " +
-									"translateY(" + self.config.itemStyle.translateY(i) + "%) " +
+								return "translateX(" + self.config.itemStyle.__translateX__(i) + "%) " +
+									"translateY(" + self.config.itemStyle.__translateY__(i) + "%) " +
 									"perspective(1000px) " +
-									"translateZ(" + self.config.itemStyle.translateZ(i) + "px) " +
-									"rotateX(" + self.config.itemStyle.rotateX(i) + "deg) " +
-									"rotateY(" + self.config.itemStyle.rotateY(i) + "deg) " +
-									"rotateZ(" + self.config.itemStyle.rotateZ(i) + "deg) " +
-									"scaleX(" + self.config.itemStyle.scaleX(i) + ") " +
-									"scaleY(" + self.config.itemStyle.scaleY(i) + ") " +
-									"scaleZ(" + self.config.itemStyle.scaleZ(i) + ") " +
+									"translateZ(" + self.config.itemStyle.__translateZ__(i) + "px) " +
+									"rotateX(" + self.config.itemStyle.__rotateX__(i) + "deg) " +
+									"rotateY(" + self.config.itemStyle.__rotateY__(i) + "deg) " +
+									"rotateZ(" + self.config.itemStyle.__rotateZ__(i) + "deg) " +
+									"scaleX(" + self.config.itemStyle.__scaleX__(i) + ") " +
+									"scaleY(" + self.config.itemStyle.__scaleY__(i) + ") " +
+									"scaleZ(" + self.config.itemStyle.__scaleZ__(i) + ") " +
+									";";
+							},
+							
+							"-webkit-transform": function(i) {
+								return "translateX(" + self.config.itemStyle.__translateX__(i) + "%) " +
+									"translateY(" + self.config.itemStyle.__translateY__(i) + "%) " +
+									"perspective(1000px) " +
+									"translateZ(" + self.config.itemStyle.__translateZ__(i) + "px) " +
+									"rotateX(" + self.config.itemStyle.__rotateX__(i) + "deg) " +
+									"rotateY(" + self.config.itemStyle.__rotateY__(i) + "deg) " +
+									"rotateZ(" + self.config.itemStyle.__rotateZ__(i) + "deg) " +
+									"scaleX(" + self.config.itemStyle.__scaleX__(i) + ") " +
+									"scaleY(" + self.config.itemStyle.__scaleY__(i) + ") " +
+									"scaleZ(" + self.config.itemStyle.__scaleZ__(i) + ") " +
 									";";
 							}
 							
@@ -112,13 +134,16 @@
 					var styles = "";
 					for (var i = -self.config.extraCount; i <= self.config.extraCount; ++i) {
 						var transformStr = self.config.itemStyle.transform(i);
-						styles += 
-							".flippers .onSide" + i + " {" +
-								"z-index: " + self.config.itemStyle['z-index'](i) + ";" +
-								"opacity: " + self.config.itemStyle['opacity'](i) + ";" +
-								"transform: " + transformStr + 
-								"-webkit-transform: " + transformStr +
-							"}\n";
+						
+						styles += ".flippers .onSide" + i + " {";
+						
+						for (var property in self.config.itemStyle) {
+							if (property.search(/__\w+__/) === -1) {
+								styles += property + ": " + self.config.itemStyle[property](i) + ";";
+							}
+						}
+						
+						styles += "}\n";
 					}
 					
 					this.place.append('<style id="" scoped>' + styles + '</style>');
@@ -135,6 +160,13 @@
 						++item;
 						if (item >= self.config.items.length) item = 0;
 					}
+					
+					this.place.on('DOMMouseScroll mousewheel', function(e) {
+						//debugger;
+						var diff  = e.originalEvent.detail ? -e.originalEvent.detail : e.originalEvent.wheelDelta;
+						if (diff > 0) self.moveUp();
+						else self.moveDown();
+					});
 					
 					$('body').keyup(function (e) {
 						if (e.which == 37) self.moveLeft();
@@ -199,11 +231,13 @@
 				Flippers.prototype.moveUp = function() {
 					// TODO
 					console.log('up arrow');
+					this.moveRight();
 				}
 				
 				Flippers.prototype.moveDown = function() {
 					// TODO
 					console.log('down arrow');
+					this.moveLeft();
 				}
 				
 				Flippers.prototype.select = function() {
