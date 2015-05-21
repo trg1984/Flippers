@@ -2,9 +2,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    
-    width: calc(283.4783px);
-    height: calc(400px);
+	
+    width: calc(4cm);
+    height: calc(5.6cm);
+
     background-color: black;
     margin: 10px;
     padding: 0px;
@@ -23,6 +24,21 @@
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+.flippers .page img {
+	height: 100%;
+	vertical-align: middle;
+}
+
+.flippers .page .menuitem {
+	width:100%;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align:center;
+	font-size: 30px;
+	display: inline-block;
+	margin-top: 1em;
+}
+
 .flippers {
     position: absolute;
     top: 50%;
@@ -32,7 +48,7 @@
     -webkit-transform: translateY(-50%) translateX(-50%);
     
     height: 100%;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 .flippers .inline { display: inline-block; }
 
